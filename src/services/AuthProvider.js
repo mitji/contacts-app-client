@@ -1,12 +1,15 @@
+//	services
+//AuthProvider.js
+
 import React from 'react';
-import authService from './auth-service';
+import authService from './auth-service'; // IMPORT functions for axios requests to API
 const { Consumer, Provider } = React.createContext();
 
 // HOC to create Consumer
 const withAuth = WrappedComponent => {
   return class extends React.Component {
     render() {
-      return(
+      return (
         <Consumer>
           {/* <Consumer> component provides callback which receives Providers "value" object */}
           {/* (value) => { <WrappedComponent />}  */}
@@ -25,60 +28,68 @@ const withAuth = WrappedComponent => {
             );
           }}
         </Consumer>
-      )
+      );
     }
-  }
-}
+  };
+};
 
-// Provider --> provides the hoc with functions
+// Provider --> provides my hoc with functions
 class AuthProvider extends React.Component {
-  state = {
-    user: null,
-    isLoggedin: false,
+  state = { 
+    isLoggedin: false, 
+    user: null, 
     isLoading: true,
-    isUserInvalid: false
-  }
+    isUserInvalid: false,
+  };
 
   componentDidMount() {
-    
+    authService.private()
+      .then(user => {
+          this.setState({ isLoggedin: true, isLoading: false })
+          console.log('user',user)
+      })
+      .catch(err =>
+        this.setState({ isLoggedin: false, user: null, isLoading: false }),
+      );
   }
 
   signup = user => {
     const { email, password } = user;
 
     authService.signup({ email, password })
-      .then( (user) => this.setState({user, isLoggedin: true}))
-      .catch( (err) => {
-        this.setState({isLoggedin: false});
-        console.log(err);
-      });
-  }
+      .then(user => this.setState({ isLoggedin: true, user }))
+      .catch(err => console.log(err));
+  };
 
   login = user => {
     const { email, password } = user;
 
     authService.login({ email, password })
-      .then(user => this.setState({ user, isLoggedin: true }))
+      .then(user => this.setState({ isLoggedin: true, user }))
       .catch(err => {
         this.setState({isUserInvalid: true})
         console.log(err)
       });
-  }
+  };
 
   logout = () => {
     authService.logout()
-      .then( () => this.setState({user: null, isLoggedin: false}))
-      .catch( (err) => console.log(err));
-  }
+      .then(() => this.setState({ isLoggedin: false, user: null }))
+      .catch(err => console.log(err));
+  };
 
   render() {
-    const { user, isLoggedin, isLoading, isUserInvalid} = this.state;
+    const { isLoading, isLoggedin, user, isUserInvalid} = this.state;
     const { login, logout, signup } = this;
 
     return (
       <Provider value={{ isLoading, isLoggedin, user, isUserInvalid, login, logout, signup}}>
         {this.props.children}
       </Provider>
-    )
+    );
   }
 }
+
+export { Consumer, withAuth };
+
+export default AuthProvider;

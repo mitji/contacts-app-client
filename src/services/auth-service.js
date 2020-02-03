@@ -10,19 +10,28 @@ class Auth {
 
   signup(user) {
     const { email, password } = user;
-    return this.auth.post('/signup', { email, password })
+    return this.auth
+            .post('/signup', { email, password })
             .then(({ data }) => data);
   }
 
   login(user) {
     const { email, password } = user;
-    return this.auth.post('/login', { email, password })
+    return this.auth
+            .post('/login', { email, password })
             .then(({ data }) => data);
   }
 
   logout() {
-    return this.auth.post('/logout')
-            .then(({ response }) => response.data);
+    return this.auth
+            .post('/logout')
+            .then(response => response.data);
+  }
+
+  private() {
+    return this.auth
+            .get('/private')
+            .then(response => response.data);
   }
 }
 
