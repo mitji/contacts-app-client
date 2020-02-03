@@ -45,8 +45,7 @@ class AuthProvider extends React.Component {
   componentDidMount() {
     authService.private()
       .then(user => {
-          this.setState({ isLoggedin: true, isLoading: false })
-          console.log('user',user)
+          this.setState({ isLoggedin: true, user: user, isLoading: false })
       })
       .catch(err =>
         this.setState({ isLoggedin: false, user: null, isLoading: false }),
