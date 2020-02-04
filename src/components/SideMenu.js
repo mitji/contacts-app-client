@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { withAuth } from '../services/AuthProvider';
+
+import { withAuth } from './../services/AuthProvider';
 
 import LetterFilter from './LetterFilter';
 import SearchBar from './SearchBar';
