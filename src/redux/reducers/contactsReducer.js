@@ -1,5 +1,7 @@
 const initialState = {
-  contacts: []
+  contacts: null,           // state that is being updated
+  copyContacts: null,       // state that is not being updated, for filter purposes 
+  contactDetails: null
 }
 
 const contactsReducer = (state = initialState, action) => {
@@ -7,19 +9,33 @@ const contactsReducer = (state = initialState, action) => {
     case 'ADD_ALL_CONTACTS':
       let newState = {
         ...state,
-        contacts:[...action.payload]
+        contacts: [...action.payload],
+        contactsCopy: [...action.payload],
       }
       return newState;
-      
+    
+    case 'ADD_CONTACT_DETAILS':
+      return {
+        ...state,
+        contacts:[...action.payload],
+        contactDetails: action.payload[0]
+      }
+
     case 'FILTER_BY_LETTER':
+      const filteredContacts = state.contactsCopy.filter( contact => {
+        return contact.name[0] === action.payload;
+      })
+      
       return( 
         {
           ...state,
-          contacts:[...action.payload]
+          contacts:[...filteredContacts]
         }
       )
 
     case 'FILTER_BY_SEARCH':
+        console.log(action.payload);
+        
         return {
           ...state,
           contacts:[...state.contacts, action.payload],

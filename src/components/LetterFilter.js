@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
+import * as actions from './../redux/actions/actions';
+import { connect } from 'react-redux';
 
 class LetterFilter extends Component {
 
-  letterFilter = (letter) => {
-    console.log(letter)
-  }
   render() {
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
     return (     
@@ -12,7 +11,7 @@ class LetterFilter extends Component {
         {
           alphabet.map((letter, i) => {
             return (
-              <button onClick={() => this.letterFilter(letter)} key={i}>{letter}</button>
+              <button onClick={() => this.props.filterByLetter(letter)} key={i}>{letter}</button>
             )
           })
         }
@@ -22,4 +21,12 @@ class LetterFilter extends Component {
   }
 }
 
-export default LetterFilter;
+const mapDispatchToProps = dispatch => {
+  return {
+    filterByLetter: letter => {
+      dispatch(actions.filterByLetter(letter));
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(LetterFilter);
