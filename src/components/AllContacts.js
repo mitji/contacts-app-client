@@ -8,14 +8,9 @@ import { connect } from 'react-redux';
 
 class AllContacts extends Component {
 
-  state = {
-    contacts: null
-  }
-
   componentDidMount() {
     axios.get('https://exercise.goldenspear.com/contacts.json')
       .then( response => { 
-        this.setState({contacts: response.data});
         this.props.addAllContacts(response.data)
       })
       .catch(err => console.log(err))
@@ -23,12 +18,12 @@ class AllContacts extends Component {
 
   render() {
     const { contacts } = this.props;
-    console.log('reduuux', contacts)
+
     return (
       <section className="sidemenu__contacts-list">
-        { this.state.contacts 
+        { contacts 
           ? (
-            this.state.contacts.map(contact => {
+            contacts.map(contact => {
               return (
                 <p className="contact">{contact.name}</p>
               )
