@@ -25,7 +25,7 @@ class AllContacts extends Component {
           ? (
             contacts.map(contact => {
               return (
-                <p className="contact">{contact.name}</p>
+                <button className="contact">{contact.name}</button>
               )
             })
           )
