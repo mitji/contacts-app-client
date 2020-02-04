@@ -10,7 +10,6 @@ class ContactDetails extends Component {
 
   render() {
     const { contactDetails } = this.props;
-    console.log('contact detaaaiiils', contactDetails);
     return (
       <section className="contact-details">
         {

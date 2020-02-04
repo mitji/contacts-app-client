@@ -12,3 +12,12 @@ export const filterByLetter = ( letter ) => ({
   type: 'FILTER_BY_LETTER',
   payload: letter
 })
+
+export const filterBySearch = ( searchStr ) => ({
+  type: 'FILTER_BY_SEARCH',
+  payload: searchStr
+})
+
+export const removeAllFilters = () => ({
+  type: 'REMOVE_FILTERS'
+})

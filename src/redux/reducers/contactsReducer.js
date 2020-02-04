@@ -25,7 +25,7 @@ const contactsReducer = (state = initialState, action) => {
       const filteredContacts = state.contactsCopy.filter( contact => {
         return contact.name[0] === action.payload;
       })
-      
+
       return( 
         {
           ...state,
@@ -34,12 +34,20 @@ const contactsReducer = (state = initialState, action) => {
       )
 
     case 'FILTER_BY_SEARCH':
-        console.log(action.payload);
-        
+        const searchResults = state.contactsCopy.filter( contact => {
+          return contact.name.includes(action.payload);
+        })
+
         return {
           ...state,
-          contacts:[...state.contacts, action.payload],
+          contacts:[...searchResults]
         };
+
+    case 'REMOVE_FILTERS':
+      return {
+        ...state,
+        contacts:[...state.contactsCopy]
+      };
 
     case 'GET_CONTACTS_OF_CONTACT':
         const taskIndex = state.contacts.findIndex( (el) => el._id === action.payload);
