@@ -10,8 +10,36 @@
   box-sizing: border-box;
   &__header {
     width: 100%;
+    display: flex;
     img {
       width: 40px;
+    }
+    input {
+      display: flex;
+      margin-left: auto;
+    }
+  }
+  &__connections {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  &__card {
+    min-width: 100px;
+    width: 20%;
+    padding: 10px 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    img {
+      border-radius: 100%;
+      width: 70px;
+    }
+    p {
+      text-align: center;
     }
   }
 }
