@@ -25,7 +25,7 @@ class AllContacts extends Component {
           ? (
             contacts.map(contact => {
               return (
-                <button className="contact">{contact.name}</button>
+                <button className="contact" onClick={() => this.props.addContactDetails(contact)}>{contact.name}</button>
               )
             })
           )
@@ -47,6 +47,9 @@ const mapDispatchToProps = dispatch => {
   return {
     addAllContacts: allContacts => {
       dispatch(actions.addAllContacts(allContacts));
+    },
+    addContactDetails: contact => {
+      dispatch(actions.addContactDetails(contact));
     }
   }
 }

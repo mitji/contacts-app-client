@@ -16,12 +16,11 @@ class ContactDetails extends Component {
           contactDetails 
           ? (
               <div className="contact-details__header">
-                {/* <img src={contactDetails.avatar} alt=""/>
+                <img src={contactDetails.avatar} alt=""/>
                 <h2 className="contact__name">{contactDetails.name}</h2>
                 <form action="">
                   <input type="text"/>
-                </form> */}
-                <h2>nameee</h2>
+                </form>
               </div>
 
           )

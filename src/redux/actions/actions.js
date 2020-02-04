@@ -3,11 +3,6 @@ export const addAllContacts = ( allContacts ) => ({
   payload: allContacts
 })
 
-export const addContactDetails = ( contact ) => ({
-  type: 'ADD_CONTACT_DETAILS',
-  payload: contact
-})
-
 export const filterByLetter = ( letter ) => ({
   type: 'FILTER_BY_LETTER',
   payload: letter
@@ -20,4 +15,9 @@ export const filterBySearch = ( searchStr ) => ({
 
 export const removeAllFilters = () => ({
   type: 'REMOVE_FILTERS'
+})
+
+export const addContactDetails = (contact) => ({
+  type: 'ADD_CONTACT_DETAILS',
+  payload: contact
 })
