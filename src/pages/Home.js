@@ -10,7 +10,7 @@ class Home extends Component {
     return (
       <div>
         {isLoggedin ? (
-          <Redirect to="/contacts" />
+          <Redirect to="/" />
         ) : (
           <div>
             <Link to="/login">

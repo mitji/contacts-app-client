@@ -11,16 +11,18 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 // private routes
 import Contacts from './pages/Contacts';
+import SideMenu from './components/SideMenu';
 
 
 function App() {
   return (
     <div className="">
+      <SideMenu /> 
       <Switch>
         <AnonRoute exact path="/login" component={Login} />
         <AnonRoute exact path="/signup" component={Signup} />
       
-        <PrivateRoute exact path="/contacts" component={Contacts} />
+        {/* <PrivateRoute exact path="/contacts" component={Contacts} /> */}
       </Switch>
       
     </div>
