@@ -45,10 +45,10 @@ class AuthProvider extends React.Component {
   componentDidMount() {
     authService.private()
       .then(user => {
-        this.setState({ isLoggedin: true, user: user, isLoading: false })
+        this.setState({ isLoggedin: true, user: user, isLoading: false, isUserInvalid: false})
       })
       .catch(err =>
-        this.setState({ isLoggedin: false, user: null, isLoading: false }),
+        this.setState({ isLoggedin: false, user: null, isLoading: false, isUserInvalid: false}),
       );
   }
 
@@ -64,7 +64,7 @@ class AuthProvider extends React.Component {
     const { email, password } = user;
 
     authService.login({ email, password })
-      .then(user => this.setState({ isLoggedin: true, user }))
+      .then(user => this.setState({ isLoggedin: true, user , isUserInvalid: false}))
       .catch(err => {
         this.setState({isUserInvalid: true})
         console.log(err)
@@ -73,7 +73,7 @@ class AuthProvider extends React.Component {
 
   logout = () => {
     authService.logout()
-      .then(() => this.setState({ isLoggedin: false, user: null }))
+      .then(() => this.setState({ isLoggedin: false, user: null, isUserInvalid: false}))
       .catch(err => console.log(err));
   };
 

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from './../services/AuthProvider';
 
+import './../styles/auth.scss';
+
 class Login extends Component {
   state = { 
     email: '', 
@@ -21,7 +23,7 @@ class Login extends Component {
 
   render() {
     const { email, password } = this.state;
-
+    console.log('is user invalid?', this.props.isUserInvalid)
     return (
       <div>
         <h1>Contacts app</h1>
@@ -45,6 +47,10 @@ class Login extends Component {
 
           <input type="submit" value="Login" />
         </form>
+        { this.props.isUserInvalid 
+          ? <p className="error-msg">Introduce a valid email and password</p>
+          : null
+        }
         <p>Not a user?</p>
         <Link to='/signup'>Signup</Link>
       </div>
