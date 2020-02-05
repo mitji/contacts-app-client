@@ -19,7 +19,7 @@ class ContactDetails extends Component {
   }
 
   render() {
-    const { contactDetails } = this.props;
+    const { contactDetails, contactConnections} = this.props;
     
     return (
       <section className="contact-details">
@@ -41,7 +41,7 @@ class ContactDetails extends Component {
               </div>
               <div className="contact-details__connections">
                 {
-                  contactDetails.connections.map( connection => {
+                  contactConnections.map( connection => {
                     return <ContactCard imgUrl={connection.avatar} name={connection.name} />
                   })
                 }
@@ -59,8 +59,8 @@ class ContactDetails extends Component {
 // redux setup in component
 const mapStateToProps = state => {
   return {
-    contacts: state.contacts,
-    contactDetails: state.contactDetails
+    contactDetails: state.contactDetails,
+    contactConnections: state.contactConnections
   }
 }
 

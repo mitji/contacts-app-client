@@ -1,7 +1,8 @@
 const initialState = {
   contacts: null,           // state that is being updated
   copyContacts: null,       // state that is not being updated, for filter purposes 
-  contactDetails: null
+  contactDetails: null,
+  contactConnections: null
 }
 
 const contactsReducer = (state = initialState, action) => {
@@ -52,7 +53,8 @@ const contactsReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        contactDetails: contact
+        contactDetails: contact,
+        contactConnections: contactsObj
       }
 
     case 'FILTER_CONNECTIONS':
@@ -61,9 +63,9 @@ const contactsReducer = (state = initialState, action) => {
       const filteredConnections = connections.filter( connection => {
         return connection.name.toLowerCase().includes(search);
       })
-      console.log(filteredConnections)
       return {
         ...state,
+        contactConnections: [...filteredConnections]
       }
 
     default:
