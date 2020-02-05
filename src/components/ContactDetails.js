@@ -11,7 +11,6 @@ import Pagination from './Pagination';
 class ContactDetails extends Component {
   state = {
     search: '',
-    totalResults: 0,
     currentPage: 1
   }
 
