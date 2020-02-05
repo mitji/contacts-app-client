@@ -26,7 +26,7 @@ const contactsReducer = (state = initialState, action) => {
       
     case 'FILTER_BY_SEARCH':
         const searchResults = state.contactsCopy.filter( contact => {
-          return contact.name.includes(action.payload);
+          return contact.name.toLowerCase().includes(action.payload);
         })
 
         return {
@@ -57,8 +57,11 @@ const contactsReducer = (state = initialState, action) => {
 
     case 'FILTER_CONNECTIONS':
       const search = action.payload;
-      console.log('search', search)
-
+      const connections = state.contactDetails.connections;
+      const filteredConnections = connections.filter( connection => {
+        return connection.name.toLowerCase().includes(search);
+      })
+      console.log(filteredConnections)
       return {
         ...state,
       }
