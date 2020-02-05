@@ -6,10 +6,13 @@ import { connect } from 'react-redux';
 
 import './../styles/contactDetails.scss';
 import ContactCard from './ContactCard';
+import Pagination from './Pagination';
 
 class ContactDetails extends Component {
   state = {
-    search: ''
+    search: '',
+    totalResults: 0,
+    currentPage: 1
   }
 
   handleInput = (e) => {
@@ -18,9 +21,20 @@ class ContactDetails extends Component {
     this.props.filterConnections(value)
   }
 
+  nextPage = (pageNumber) => {
+    this.setState({currentPage: pageNumber});
+  }
+
   render() {
     const { contactDetails, contactConnections} = this.props;
+    let totalResults = 0;
     
+    if(contactConnections) totalResults =  contactConnections.length;
+
+
+    const elementsPerPage = 15;
+    const numOfPages = Math.ceil(totalResults / elementsPerPage);
+
     return (
       <section className="contact-details">
         {
@@ -41,11 +55,14 @@ class ContactDetails extends Component {
               </div>
               <div className="contact-details__connections">
                 {
-                  contactConnections.map( connection => {
+                  
+                  contactConnections.map( (connection, i) => {
+                    if ( i >= ((this.state.currentPage-1)*elementsPerPage) && i < this.state.currentPage*elementsPerPage)
                     return <ContactCard imgUrl={connection.avatar} name={connection.name} />
                   })
                 }
               </div>
+            <Pagination nextPage={this.nextPage} numPages={numOfPages} currentPage={this.state.currentPage}/>
             </div>
 
           )

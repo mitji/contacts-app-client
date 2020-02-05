@@ -43,7 +43,6 @@ const contactsReducer = (state = initialState, action) => {
 
     case 'ADD_CONTACT_DETAILS':
       const contact = action.payload;
-      console.log('inital', contact)
       const contactsArr = contact.connections;
 
       const contactsObj = state.contactsCopy.filter( contact => {
