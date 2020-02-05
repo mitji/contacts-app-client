@@ -8,7 +8,6 @@ import Pagination from './Pagination';
 class AllContacts extends Component {
 
   state = {
-    totalResults: 0,
     currentPage: 1
   }
 
@@ -16,7 +15,6 @@ class AllContacts extends Component {
     axios.get('https://exercise.goldenspear.com/contacts.json')
       .then( response => { 
         this.props.addAllContacts(response.data);
-        this.setState({totalResults: response.data.length});
       })
       .catch(err => console.log(err))
   }
@@ -27,8 +25,12 @@ class AllContacts extends Component {
 
   render() {
     const { contacts } = this.props;
+    let totalResults = 0
+    if (contacts) {
+      totalResults = contacts.length;
+    }
     const elementsPerPage = 16;
-    const numOfPages = Math.ceil(this.state.totalResults / elementsPerPage);
+    const numOfPages = Math.ceil(totalResults / elementsPerPage);
 
     return (
       <section className="sidemenu__contacts-list">
