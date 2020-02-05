@@ -25,7 +25,8 @@ class AllContacts extends Component {
 
   render() {
     const { contacts } = this.props;
-    let totalResults = 0
+
+    let totalResults = 0;
     if (contacts) {
       totalResults = contacts.length;
     }
@@ -37,7 +38,7 @@ class AllContacts extends Component {
         { contacts 
           ? (
             contacts.map((contact, i) => {
-              if ( i >= ((this.state.currentPage-1)*elementsPerPage) && i < this.state.currentPage*elementsPerPage)
+              if ( (i >= ((this.state.currentPage-1)*elementsPerPage) && i < this.state.currentPage*elementsPerPage) || this.props.activeSearch)
               return (
                 <button className="contact" onClick={() => this.props.addContactDetails(contact)} key={i}>{contact.name}</button>
               )
@@ -54,7 +55,8 @@ class AllContacts extends Component {
 // redux setup in component
 const mapStateToProps = state => {
   return {
-    contacts: state.contacts
+    contacts: state.contacts,
+    activeSearch: state.activeSearch
   }
 }
 

@@ -2,7 +2,8 @@ const initialState = {
   contacts: null,           // state that is being updated
   copyContacts: null,       // state that is not being updated, for filter purposes 
   contactDetails: null,
-  contactConnections: null
+  contactConnections: null,
+  activeSearch: false
 }
 
 const contactsReducer = (state = initialState, action) => {
@@ -22,7 +23,8 @@ const contactsReducer = (state = initialState, action) => {
 
       return {
           ...state,
-          contacts:[...filteredContacts]
+          contacts:[...filteredContacts],
+          activeSearch: true
       }
       
     case 'FILTER_BY_SEARCH':
@@ -30,15 +32,22 @@ const contactsReducer = (state = initialState, action) => {
           return contact.name.toLowerCase().includes(action.payload);
         })
 
+        let active = true;
+        if (action.payload === '') {
+          active = false;
+        }
+
         return {
           ...state,
-          contacts:[...searchResults]
+          contacts:[...searchResults],
+          activeSearch: active
         };
 
     case 'REMOVE_FILTERS':
       return {
         ...state,
-        contacts:[...state.contactsCopy]
+        contacts:[...state.contactsCopy],
+        activeSearch: false
       };
 
     case 'ADD_CONTACT_DETAILS':
