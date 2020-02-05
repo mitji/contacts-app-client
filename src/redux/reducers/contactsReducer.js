@@ -55,6 +55,14 @@ const contactsReducer = (state = initialState, action) => {
         contactDetails: contact
       }
 
+    case 'FILTER_CONNECTIONS':
+      const search = action.payload;
+      console.log('search', search)
+
+      return {
+        ...state,
+      }
+
     default:
       return state;
   }

@@ -21,3 +21,8 @@ export const addContactDetails = (contact) => ({
   type: 'ADD_CONTACT_DETAILS',
   payload: contact
 })
+
+export const filterConnections = (search) => ({
+  type: 'FILTER_CONNECTIONS',
+  payload: search
+})

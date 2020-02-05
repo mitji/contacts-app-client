@@ -14,7 +14,8 @@ class ContactDetails extends Component {
 
   handleInput = (e) => {
     const { value } = e.target;
-    this.setState({search: value})
+    this.setState({search: value});
+    this.props.filterConnections(value)
   }
 
   render() {
@@ -67,6 +68,9 @@ const mapDispatchToProps = dispatch => {
   return {
     addContactDetails: contact => {
       dispatch(actions.addContactDetails(contact));
+    },
+    filterConnections: search => {
+      dispatch(actions.filterConnections(search));
     }
   }
 }
