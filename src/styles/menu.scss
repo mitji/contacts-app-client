@@ -20,7 +20,7 @@
       padding: 5px;
       text-align: center;
       transition: 0.3s;
-      color: #f5f5f5;
+      color: #efb810;
       &:hover {
         transition: 0.3s;
         background-color: #696969;
@@ -33,25 +33,19 @@
     padding-left: 10px;
     box-sizing: border-box;
     position: fixed;
-    max-width: 450px;
+    max-width: 425px;
     width: 100%;
     margin-top: 15px;
     margin-left: 46px;
     input {
       width: 100%;
-      border-radius: 3px;
-      padding: 8px 15px;
-      box-sizing: border-box;
-      border: none;
-      box-shadow: 1px 2px 5px 2px #e1e1e1;
-      font-size: 16px;
-      font-weight: 300;
-      outline: none;
     }
     button {
-      margin-top: 5px;
+      margin-top: 8px;
       transition: 0.3s;
       padding: 3px 6px;
+      border-radius: 3px;
+      font-weight: bold;
       &:hover {
         background-color: #e1e1e1;
       }
@@ -66,7 +60,7 @@
     height: 100%;
     overflow: auto;
     top: 0;
-    margin: 80px 0 0 46px;
+    margin: 90px 0 0 46px;
     overflow: auto;
     .contact {
       padding: 10px;
@@ -85,7 +79,7 @@
   .btn-logout {
     position: absolute;
     right: 15px;
-    margin-top: 55px;
+    margin-top: 60px;
     color: cadetblue;
     text-decoration: underline;
   }
