@@ -12,7 +12,7 @@ const Pagination = (props) => {
       <li>{props.currentPage} / {props.numPages}</li>
       { props.currentPage < props.numPages
         ? <li><button onClick={() => props.nextPage(props.currentPage+1)}>Next</button></li>
-        : <li><button onClick={() => props.nextPage(props.currentPage+1)}>Next</button></li>
+        : <li><button>Next</button></li>
       }
       
     </ul>
