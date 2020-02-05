@@ -38,10 +38,11 @@ class AllContacts extends Component {
         { contacts 
           ? (
             contacts.map((contact, i) => {
-              if ( (i >= ((this.state.currentPage-1)*elementsPerPage) && i < this.state.currentPage*elementsPerPage) || this.props.activeSearch)
-              return (
-                <button className="contact" onClick={() => this.props.addContactDetails(contact)} key={i}>{contact.name}</button>
-              )
+              if ( (i >= ((this.state.currentPage-1)*elementsPerPage) && i < this.state.currentPage*elementsPerPage)) {
+                return (
+                  <button className="contact" onClick={() => this.props.addContactDetails(contact)} key={i}>{contact.name}</button>
+                )
+              }
             })
           )
           : <p>Loading...</p>
