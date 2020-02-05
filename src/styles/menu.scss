@@ -73,6 +73,12 @@
         background-color: #e1e1e1;
       }
     }
+    .pagination {
+      position: absolute;
+      bottom: 115px;
+      width: 100%;
+      margin-left: -10px;
+    }
   }
 
   .btn-logout {

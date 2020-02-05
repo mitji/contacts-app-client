@@ -62,7 +62,7 @@ class ContactDetails extends Component {
                   })
                 }
               </div>
-            <Pagination nextPage={this.nextPage} numPages={numOfPages} currentPage={this.state.currentPage}/>
+              <Pagination nextPage={this.nextPage} numPages={numOfPages} currentPage={this.state.currentPage}/>
             </div>
 
           )
