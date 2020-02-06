@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import { withAuth } from './../services/AuthProvider';
 
 import LetterFilter from './LetterFilter';
@@ -18,7 +17,6 @@ class SideMenu extends Component {
           ? (
             <section className="sidemenu">
               <SearchBar />
-              <button onClick={this.props.logout} className="btn-logout">Logout</button>
               <LetterFilter />
               <AllContacts />
             </section>

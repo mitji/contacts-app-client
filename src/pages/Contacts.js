@@ -5,11 +5,11 @@ import ContactDetails from '../components/ContactDetails';
 
 class Contacts extends Component {
   render() {
-    console.log(this.props)
     return (
       <div>
         <SideMenu />
         <ContactDetails />
+        <button onClick={this.props.logout} className="btn-logout">Logout</button>
       </div>
     )
   }
