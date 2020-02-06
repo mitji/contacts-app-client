@@ -26,3 +26,7 @@ export const filterConnections = (search) => ({
   type: 'FILTER_CONNECTIONS',
   payload: search
 })
+
+export const deactivateSearch = () => ({
+  type: 'DEACTIVATE_SEARCH'
+})

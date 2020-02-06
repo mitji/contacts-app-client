@@ -20,6 +20,7 @@ class AllContacts extends Component {
   }
 
   nextPage = (pageNumber) => {
+    this.props.deactivateSearch();
     this.setState({currentPage: pageNumber});
   }
 
@@ -34,8 +35,9 @@ class AllContacts extends Component {
     
     const elementsPerPage = 16;
     const numOfPages = Math.ceil(totalResults / elementsPerPage);
-    
-    if(currentPage > numOfPages) currentPage = 1;
+
+    if(currentPage > numOfPages) currentPage = 1;     // when current page is greater than the number of pages of filter results
+    if(this.props.activeSearch) currentPage = 1;      // when we are filtering, set current page to the first page of results
     // ---
     return (
       <section className="sidemenu__contacts-list">
@@ -75,6 +77,9 @@ const mapDispatchToProps = dispatch => {
     },
     addContactDetails: contact => {
       dispatch(actions.addContactDetails(contact));
+    },
+    deactivateSearch: () => {
+      dispatch(actions.deactivateSearch())
     }
   }
 }

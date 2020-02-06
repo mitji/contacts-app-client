@@ -49,6 +49,12 @@ const contactsReducer = (state = initialState, action) => {
         contacts:[...state.contactsCopy],
         activeSearch: false
       };
+    
+    case 'DEACTIVATE_SEARCH':
+      return {
+        ...state,
+        activeSearch: false
+      };
 
     case 'ADD_CONTACT_DETAILS':
       const contact = action.payload;
