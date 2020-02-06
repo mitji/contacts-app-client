@@ -36,17 +36,16 @@
     margin-left: 35px;
     .inline-wrapper {
       width: 100%;
-      background: none;
-      border-radius: 0;
       border-bottom: 1px solid #4a4a4a;
-      padding: 20px;
       align-items: center;
       img {
         width: 15px;
         height: 15px;
+        margin-left: 20px;
       }
       input {
-        margin-left: 10px;
+        padding: 20px;
+        padding-left: 10px;
       }
     }
     button {

@@ -48,14 +48,17 @@ class ContactDetails extends Component {
               <div className="contact-details__header">
                 <img src={contactDetails.avatar} alt=""/>
                 <h2 className="contact__name">{contactDetails.name}</h2>
-                <input
-                  type="text"
-                  name="search"
-                  value={this.state.search}
-                  placeholder="Search..."
-                  onChange={this.handleInput}
-                  className="search"
-                />
+                <div className="inline-wrapper">
+                  <img src="./search.png" alt=""/>
+                  <input
+                    type="text"
+                    name="search"
+                    value={this.state.search}
+                    placeholder="Search..."
+                    onChange={this.handleInput}
+                    className="search"
+                  />
+                </div>
               </div>
               <div className="contact-details__connections">
                 {
