@@ -21,8 +21,14 @@
     input {
       display: flex;
       margin-left: auto;
-      width: 250px;
-      box-shadow: 1px 2px 5px 2px #d2d2d2;
+      width: 350px;
+      padding: 10px 0;
+      border-bottom: 1px solid #e1e1e1;
+      transition: 0.3s;
+      &:focus {
+        transition: 0.5s;
+        border-bottom: 1px solid #b1b1b1;
+      }
     }
   }
   &__connections {
