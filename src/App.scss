@@ -42,7 +42,14 @@ input {
   font-size: 16px;
   font-weight: 300;
   outline: none;
+  &.search{
+    width: 100%;
+    background: none;
+    border-radius: 0px;
+    padding: 0;
+  }
 }
+
 
 .inline-wrapper {
   display: flex;

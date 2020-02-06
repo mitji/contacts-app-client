@@ -21,14 +21,18 @@ class SearchBar extends Component {
   render() {
     return (     
       <section className="sidemenu__search-bar">
-        
-      <input 
-        type="text" 
-        name="search" 
-        value={this.state.search} 
-        placeholder="Search..."
-        onChange={this.handleInput}  
-      />
+
+      <div className="inline-wrapper">
+        <img src="./search.png" alt=""/>
+        <input 
+          type="text" 
+          name="search" 
+          value={this.state.search} 
+          placeholder="Search..."
+          onChange={this.handleInput}
+          className="search" 
+        />
+      </div>
 
       <button onClick={() => this.removeFilters()}>Remove all filters</button>
         
