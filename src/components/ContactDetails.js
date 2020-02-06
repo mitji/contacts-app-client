@@ -26,13 +26,18 @@ class ContactDetails extends Component {
 
   render() {
     const { contactDetails, contactConnections} = this.props;
-    let totalResults = 0;
     
-    if(contactConnections) totalResults =  contactConnections.length;
+    // --- Calculation of Pagination inputs
+    let currentPage = this.state.currentPage;
 
+    let totalResults = 0;
+    if(contactConnections) totalResults =  contactConnections.length;
 
     const elementsPerPage = 15;
     const numOfPages = Math.ceil(totalResults / elementsPerPage);
+    
+    if(currentPage > numOfPages) currentPage = 1;
+    // ---
 
     return (
       <section className="contact-details">
@@ -56,12 +61,12 @@ class ContactDetails extends Component {
                 {
                   
                   contactConnections.map( (connection, i) => {
-                    if ( i >= ((this.state.currentPage-1)*elementsPerPage) && i < this.state.currentPage*elementsPerPage)
+                    if ( (i >= ((currentPage-1)*elementsPerPage) && i < currentPage*elementsPerPage) || numOfPages === 1)
                     return <ContactCard imgUrl={connection.avatar} name={connection.name} />
                   })
                 }
               </div>
-              <Pagination nextPage={this.nextPage} numPages={numOfPages} currentPage={this.state.currentPage}/>
+              <Pagination nextPage={this.nextPage} numPages={numOfPages} currentPage={currentPage}/>
             </div>
 
           )

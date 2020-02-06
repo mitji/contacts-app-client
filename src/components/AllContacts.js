@@ -25,13 +25,13 @@ class AllContacts extends Component {
 
   render() {
     const { contacts } = this.props;
+    
+    // --- Calculation of Pagination inputs
     let currentPage = this.state.currentPage;
 
-    // --- Calculation of Pagination inputs
     let totalResults = 0;
-    if (contacts) {
-      totalResults = contacts.length;
-    }
+    if (contacts) totalResults = contacts.length;
+    
     const elementsPerPage = 16;
     const numOfPages = Math.ceil(totalResults / elementsPerPage);
     
