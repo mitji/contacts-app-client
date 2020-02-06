@@ -25,29 +25,36 @@ class AllContacts extends Component {
 
   render() {
     const { contacts } = this.props;
+    let currentPage = this.state.currentPage;
 
+    // --- Calculation of Pagination inputs
     let totalResults = 0;
     if (contacts) {
       totalResults = contacts.length;
     }
     const elementsPerPage = 16;
     const numOfPages = Math.ceil(totalResults / elementsPerPage);
-
+    
+    if(currentPage > numOfPages) currentPage = 1;
+    // ---
     return (
       <section className="sidemenu__contacts-list">
         { contacts 
           ? (
             contacts.map((contact, i) => {
-              if ( (i >= ((this.state.currentPage-1)*elementsPerPage) && i < this.state.currentPage*elementsPerPage)) {
+              if ((i >= ((currentPage-1)*elementsPerPage) && i < currentPage*elementsPerPage) || numOfPages === 1)  {
                 return (
                   <button className="contact" onClick={() => this.props.addContactDetails(contact)} key={i}>{contact.name}</button>
                 )
+              }
+              else {
+                return null
               }
             })
           )
           : <p>Loading...</p>
         }
-        <Pagination nextPage={this.nextPage} numPages={numOfPages} currentPage={this.state.currentPage}/>
+        <Pagination nextPage={this.nextPage} numPages={numOfPages} currentPage={currentPage}/>
       </section>
     )
   }
