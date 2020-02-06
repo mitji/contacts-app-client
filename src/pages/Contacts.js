@@ -9,7 +9,9 @@ class Contacts extends Component {
       <div>
         <SideMenu />
         <ContactDetails />
-        <button onClick={this.props.logout} className="btn-logout">Logout</button>
+        <button onClick={this.props.logout} className="btn-logout">
+          <img src="./logout.png" alt=""/>
+        </button>
       </div>
     )
   }

@@ -14,11 +14,23 @@ button {
   font-size: 14px;
   cursor: pointer;
   background: none;
+  &:hover {
+    transition: 0.3s;
+  }
 }
 
 .btn-logout {
   position: absolute;
   right: 0;
+  bottom: 0;
+  background-color: #efb80f;
+  padding: 5px;
+  &:hover {
+    background-color: #efb70fd5;
+  }
+  img {
+    width: 25px;
+  }
 }
 
 input {
