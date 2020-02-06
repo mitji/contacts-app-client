@@ -86,8 +86,9 @@
       }
     }
     .pagination {
+      position: absolute;
+      bottom: 125px;
       width: 100%;
-      margin-top: 15px;
     }
   }
 }
