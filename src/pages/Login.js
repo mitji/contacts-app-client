@@ -23,36 +23,47 @@ class Login extends Component {
 
   render() {
     const { email, password } = this.state;
-    console.log('is user invalid?', this.props.isUserInvalid)
+
     return (
-      <div>
-        <h1>Contacts app</h1>
-        <h2>Login</h2>
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={this.handleChange}
-          />
+      <div className="auth">
+        <section className="auth__company">
+          <img src="./logo.png" alt=""/>
+        </section>
+        <section className="auth__form">
+          <h1>Contacts app</h1>
+          <form onSubmit={this.handleFormSubmit}>
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={this.handleChange}
+              placeholder="Email"
+            />
 
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={this.handleChange}
-          />
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={this.handleChange}
+              placeholder="Password"
+            />
 
-          <input type="submit" value="Login" />
-        </form>
-        { this.props.isUserInvalid 
-          ? <p className="error-msg">Introduce a valid email and password</p>
-          : null
-        }
-        <p>Not a user?</p>
-        <Link to='/signup'>Signup</Link>
+            <div className="inline-wrapper">
+              <input type="checkbox"/>
+              <span>Remember me</span>
+            </div>
+
+            { this.props.isUserInvalid 
+              ? <p className="error-msg"><span>&#9888;</span> Introduce a valid email and password</p>
+              : null
+            }
+            <input type="submit" value="Login" className="auth__btn"/>
+          </form>
+          <div className="inline-wrapper">
+            <p>Not a user?</p>
+            <Link to='/signup' className="link">Signup</Link>
+          </div>
+        </section>
       </div>
     );
   }

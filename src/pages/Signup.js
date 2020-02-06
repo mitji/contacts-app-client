@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from './../services/AuthProvider';
+
 class Signup extends Component {
   state = {
     email: '',
@@ -21,31 +22,38 @@ class Signup extends Component {
   render() {
     const { email, password } = this.state;
     return (
-      <div>
-        <h1>Contacts app</h1>
-        <h2>Signup</h2>
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={this.handleChange}
-          />
+      <div className="auth">
+        <section className="auth__company">
+          <img src="./logo.png" alt=""/>
+        </section>
+        <section className="auth__form">
+          <h1>Contacts app</h1>
+          <form onSubmit={this.handleFormSubmit}>
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={this.handleChange}
+              placeholder="Email"
+              required
+            />
 
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={this.handleChange}
-          />
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={this.handleChange}
+              placeholder="Password"
+              required
+            />
 
-          <input type="submit" value="Signup"/>
-        </form>
-
-        <p>Already a user?</p>
-        <Link to='/login'>Login</Link>
+            <input type="submit" value="Signup" className="auth__btn"/>
+          </form>
+          <div className="inline-wrapper">
+            <p>Already a user?</p>
+            <Link to='/login' className="link">Login</Link>
+          </div>
+        </section>
       </div>
     )
   }
