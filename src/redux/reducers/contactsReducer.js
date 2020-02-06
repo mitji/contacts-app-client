@@ -9,10 +9,12 @@ const initialState = {
 const contactsReducer = (state = initialState, action) => {
   switch(action.type) {
     case 'ADD_ALL_CONTACTS':
-      let newState = {
+      const allContacts = action.payload;
+      allContacts.sort( (a,b) => a.name.localeCompare(b.name)); // sort it alphabetically
+      const newState = {
         ...state,
-        contacts: [...action.payload],
-        contactsCopy: [...action.payload],
+        contacts: [...allContacts],
+        contactsCopy: [...allContacts],
       }
       return newState;
 
@@ -63,6 +65,8 @@ const contactsReducer = (state = initialState, action) => {
       const contactsObj = state.contactsCopy.filter( contact => {
         return contactsArr.includes(contact.id)
       })
+
+      contactsObj.sort( (a,b) => a.name.localeCompare(b.name));
       contact.connections = contactsObj;
 
       return {
