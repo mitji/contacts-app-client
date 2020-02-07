@@ -38,6 +38,7 @@ class Login extends Component {
               value={email}
               onChange={this.handleChange}
               placeholder="Email"
+              required
             />
 
             <input
@@ -46,6 +47,7 @@ class Login extends Component {
               value={password}
               onChange={this.handleChange}
               placeholder="Password"
+              required
             />
 
             <div className="inline-wrapper">
