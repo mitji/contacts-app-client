@@ -33,29 +33,31 @@ class AllContacts extends Component {
     let totalResults = 0;
     if (contacts) totalResults = contacts.length;
     
-    const elementsPerPage = 16;
+    const elementsPerPage = 50;
     const numOfPages = Math.ceil(totalResults / elementsPerPage);
 
     if(currentPage > numOfPages) currentPage = 1;     // when current page is greater than the number of pages of filter results
     if(this.props.activeSearch) currentPage = 1;      // when we are filtering, set current page to the first page of results
     // ---
     return (
-      <section className="sidemenu__contacts-list">
-        { contacts 
-          ? (
-            contacts.map((contact, i) => {
-              if ((i >= ((currentPage-1)*elementsPerPage) && i < currentPage*elementsPerPage) || numOfPages === 1)  {
-                return (
-                  <button className="contact" onClick={() => this.props.addContactDetails(contact)} key={i}>{contact.name}</button>
-                )
-              }
-              else {
-                return null
-              }
-            })
-          )
-          : <p>Loading...</p>
-        }
+      <section className="sidemenu__contacts">
+        <div className="sidemenu__contacts__list">
+          { contacts 
+            ? (
+              contacts.map((contact, i) => {
+                if ((i >= ((currentPage-1)*elementsPerPage) && i < currentPage*elementsPerPage) || numOfPages === 1)  {
+                  return (
+                    <button className="contact" onClick={() => this.props.addContactDetails(contact)} key={i}>{contact.name}</button>
+                  )
+                }
+                else {
+                  return null
+                }
+              })
+            )
+            : <p>Loading...</p>
+          }
+        </div>
         <Pagination nextPage={this.nextPage} numPages={numOfPages} currentPage={currentPage}/>
       </section>
     )
