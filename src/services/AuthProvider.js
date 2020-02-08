@@ -37,7 +37,8 @@ const withAuth = WrappedComponent => {
 class AuthProvider extends React.Component {
   state = { 
     isLoggedin: false, 
-    user: null, 
+    user: null,
+    rememberMe: false, 
     isLoading: true,
     isUserInvalid: false,
   };
@@ -53,18 +54,18 @@ class AuthProvider extends React.Component {
   }
 
   signup = user => {
-    const { email, password } = user;
+    const { email, password, rememberMe } = user;
 
-    authService.signup({ email, password })
-      .then(user => this.setState({ isLoggedin: true, user }))
+    authService.signup({ email, password, rememberMe})
+      .then(user => this.setState({ isLoggedin: true, user , rememberMe, isUserInvalid: false}))
       .catch(err => console.log(err));
   };
 
-  login = user => {
-    const { email, password } = user;
+  login = (user) => {
+    const { email, password, rememberMe } = user;
 
-    authService.login({ email, password })
-      .then(user => this.setState({ isLoggedin: true, user , isUserInvalid: false}))
+    authService.login({ email, password, rememberMe})
+      .then(user => this.setState({ isLoggedin: true, user , rememberMe, isUserInvalid: false}))
       .catch(err => {
         this.setState({isUserInvalid: true})
         console.log(err)
@@ -72,9 +73,13 @@ class AuthProvider extends React.Component {
   };
 
   logout = () => {
-    authService.logout()
-      .then(() => this.setState({ isLoggedin: false, user: null, isUserInvalid: false}))
-      .catch(err => console.log(err));
+    if(this.state.rememberMe) {
+      authService.logout()
+        .then(() => this.setState({ isLoggedin: false, user: null, isUserInvalid: false}))
+        .catch(err => console.log(err));
+    } else {
+      this.setState({isLoggedin: false, user: null, isUserInvalid: false})
+    }
   };
 
   render() {

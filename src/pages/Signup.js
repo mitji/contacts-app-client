@@ -5,19 +5,25 @@ import { withAuth } from './../services/AuthProvider';
 class Signup extends Component {
   state = {
     email: '',
-    password: ''
+    password: '',
+    rememberMe: true
   }
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const { email, password } = this.state;
-    this.props.signup({ email, password });
+    const { email, password, rememberMe } = this.state;
+    this.props.signup({ email, password, rememberMe });
   };
 
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
+  
+  rememberMehandler = () => {
+    const remember = this.state.rememberMe;
+    this.setState({rememberMe: !remember});
+  }
 
   render() {
     const { email, password } = this.state;
@@ -46,6 +52,13 @@ class Signup extends Component {
               placeholder="Password"
               required
             />
+
+            <div className="inline-wrapper">
+              <input type="checkbox" 
+                     checked={this.state.rememberMe}
+                     onChange={this.rememberMehandler}/>
+              <span>Remember me</span>
+            </div>
 
             <input type="submit" value="Signup" className="auth__btn"/>
           </form>

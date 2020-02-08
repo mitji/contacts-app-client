@@ -7,13 +7,14 @@ import './../styles/auth.scss';
 class Login extends Component {
   state = { 
     email: '', 
-    password: '' 
+    password: '',
+    rememberMe: true
   };
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const { email, password } = this.state;
-    this.props.login({ email, password });
+    const { email, password, rememberMe} = this.state;
+    this.props.login({ email, password, rememberMe});
   };
 
   handleChange = event => {
@@ -21,9 +22,14 @@ class Login extends Component {
     this.setState({ [name]: value });
   };
 
+  rememberMehandler = () => {
+    const remember = this.state.rememberMe;
+    this.setState({rememberMe: !remember});
+  }
+
   render() {
     const { email, password } = this.state;
-
+    console.log(this.state.rememberMe)
     return (
       <div className="auth">
         <section className="auth__company">
@@ -51,7 +57,9 @@ class Login extends Component {
             />
 
             <div className="inline-wrapper">
-              <input type="checkbox"/>
+              <input type="checkbox" 
+                     checked={this.state.rememberMe}
+                     onChange={this.rememberMehandler}/>
               <span>Remember me</span>
             </div>
 
