@@ -3,7 +3,7 @@
 Frontend for: https://github.com/mitji/contacts-app-client
 <br>
 
-<b>Tech stack:</b> React.js, SASS.
+<b>Tech stack:</b> React.js, Redux, SASS.
 
 ### How to run the project?
 
