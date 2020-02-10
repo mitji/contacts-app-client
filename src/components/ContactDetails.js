@@ -33,7 +33,7 @@ class ContactDetails extends Component {
     let totalResults = 0;
     if(contactConnections) totalResults =  contactConnections.length;
 
-    const elementsPerPage = 15;
+    const elementsPerPage = 20;
     const numOfPages = Math.ceil(totalResults / elementsPerPage);
     
     if(currentPage > numOfPages) currentPage = 1;
