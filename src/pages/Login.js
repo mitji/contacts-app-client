@@ -29,7 +29,6 @@ class Login extends Component {
 
   render() {
     const { email, password } = this.state;
-    console.log(this.state.rememberMe)
     return (
       <div className="auth">
         <section className="auth__company">

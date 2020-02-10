@@ -13,7 +13,6 @@ class AllContacts extends Component {
 
   componentDidMount() {
     const token = localStorage.getItem('jwtToken');
-    console.log('tokeeen', token)
     axios.get('http://localhost:5000/api/contacts', { headers: {"Authorization" : `Bearer ${token}`}})
       .then( response => { 
         this.props.addAllContacts(response.data);
