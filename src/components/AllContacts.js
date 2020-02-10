@@ -12,7 +12,9 @@ class AllContacts extends Component {
   }
 
   componentDidMount() {
-    axios.get('https://exercise.goldenspear.com/contacts.json')
+    const token = localStorage.getItem('jwtToken');
+    console.log('tokeeen', token)
+    axios.get('http://localhost:5000/api/contacts', { headers: {"Authorization" : `Bearer ${token}`}})
       .then( response => { 
         this.props.addAllContacts(response.data);
       })
