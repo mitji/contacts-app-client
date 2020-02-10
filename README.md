@@ -1,6 +1,6 @@
 ## Contacts app client
 
-Frontend for: https://github.com/mitji/contacts-app-client
+Frontend for: https://github.com/mitji/contacts-app-server
 <br>
 
 <b>Tech stack:</b> React.js, Redux, SASS.
