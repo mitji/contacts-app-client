@@ -57,7 +57,9 @@ class AllContacts extends Component {
                 }
               })
             )
-            : <p>Loading...</p>
+            : <div className="loading">
+                <img src="/loading.gif" alt=""/>
+              </div>
           }
         </div>
         <Pagination nextPage={this.nextPage} numPages={numOfPages} currentPage={currentPage}/>
